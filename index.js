@@ -1,7 +1,7 @@
-import React, {Component} from "react"
-import {View, Text, TouchableOpacity} from "react-native"
+import React, { Component } from "react"
+import { View, Text, TouchableOpacity } from "react-native"
 import Ripple from "react-native-material-ripple"
-import {Button, Icon} from "native-base"
+import { Button, Icon } from "native-base"
 import PropTypes from "prop-types"
 
 export default class Tabbar extends Component {
@@ -61,19 +61,19 @@ export default class Tabbar extends Component {
     _getTabbarStyle = () => {
       let style = {};
       if (this.props.tabbarBgColor) {
-        Object.assign(style, {backgroundColor: this.props.tabbarBgColor});
+        Object.assign(style, { backgroundColor: this.props.tabbarBgColor });
       }
       if (this.props.tabbarBorderTopColor) {
-        Object.assign(style, {borderTopColor: this.props.tabbarBorderTopColor});
-        Object.assign(style, {borderTopWidth: 1});
+        Object.assign(style, { borderTopColor: this.props.tabbarBorderTopColor });
+        Object.assign(style, { borderTopWidth: 1 });
       }
       return style;
     }
 
     _getIconStyle = (tab) => {
       if (this.props.activePage === tab.page)
-        return {color: this.props.selectedIconColor}
-      else return {color: this.props.iconColor}
+        return { color: this.props.selectedIconColor }
+      else return { color: this.props.iconColor }
     }
 
     _getLabelStyle = (tab) => {
@@ -82,41 +82,41 @@ export default class Tabbar extends Component {
       }
 
       if (this.props.activePage === tab.page)
-        return Object.assign(style, {color: this.props.selectedLabelColor});
-      else return Object.assign(style, {color: this.props.labelColor});
+        return Object.assign(style, { color: this.props.selectedLabelColor });
+      else return Object.assign(style, { color: this.props.labelColor });
     }
 
     _renderBadge = (tab) => {
       let hasRippleStyle = {};
       if (this.props.type === "ripple") {
-        Object.assign(hasRippleStyle, {right: -8})
-        Object.assign(hasRippleStyle, {top: -1})
+        Object.assign(hasRippleStyle, { right: -8 })
+        Object.assign(hasRippleStyle, { top: -1 })
       }
 
       let hasTextStyle = {};
       if (tab.iconText) {
-        Object.assign(hasTextStyle, {top: -2})
+        Object.assign(hasTextStyle, { top: -2 })
       }
 
       let tabBadgeColor = {};
       if (tab.badgeColor) {
-        Object.assign(tabBadgeColor, {backgroundColor: tab.badgeColor})
+        Object.assign(tabBadgeColor, { backgroundColor: tab.badgeColor })
       }
 
       let tabBadgeLabelColor = {};
       if (tab.badgeLabelColor) {
-        Object.assign(tabBadgeLabelColor, {color: tab.badgeLabelColor})
+        Object.assign(tabBadgeLabelColor, { color: tab.badgeLabelColor })
       }
 
       if (tab.badgeNumber && tab.badgeNumber > 0) {
         return (
           <View style={[
-            styles.badge, {backgroundColor: this.props.badgeColor},
+            styles.badge, { backgroundColor: this.props.badgeColor },
             tabBadgeColor, hasTextStyle, hasRippleStyle
           ]}>
             <Text style={[
-              {color: this.props.badgeLabelColor},
-              {fontSize: this.props.badgeLabelSize},
+              { color: this.props.badgeLabelColor },
+              { fontSize: this.props.badgeLabelSize },
               tabBadgeLabelColor
             ]}>
               {tab.badgeNumber}
@@ -146,7 +146,7 @@ export default class Tabbar extends Component {
                 style={styles.tabButton}
               >
                 <View style={styles.iconAndBadge}>
-                  <Icon style={_getIconStyle(tab)} name={tab.icon}/>
+                  <Icon style={_getIconStyle(tab)} name={tab.icon} type={tab.iconType} />
                   {_renderBadge(tab)}
                 </View>
                 {_renderIconText(tab)}
@@ -168,7 +168,7 @@ export default class Tabbar extends Component {
                 onPressOut={() => this.props.stateFunc(tab)}
               >
                 <View style={styles.iconAndBadge}>
-                  <Icon style={_getIconStyle(tab)} name={tab.icon}/>
+                  <Icon style={_getIconStyle(tab)} name={tab.icon} type={tab.iconType} />
                   {_renderBadge(tab)}
                 </View>
 
@@ -221,7 +221,7 @@ const styles = {
     alignItems: "center",
   },
   badge: {
-    minWidth : 16,
+    minWidth: 16,
     height: 16,
     padding: 1,
     paddingLeft: 4,
