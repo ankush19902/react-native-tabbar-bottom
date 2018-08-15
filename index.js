@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { View, Text, TouchableOpacity } from "react-native"
 import Ripple from "react-native-material-ripple"
-import { Button, Icon } from "native-base"
+import { Button, Icon, Thumbnail } from "native-base"
 import PropTypes from "prop-types"
 
 export default class Tabbar extends Component {
@@ -168,7 +168,9 @@ export default class Tabbar extends Component {
                 onPressOut={() => this.props.stateFunc(tab)}
               >
                 <View style={styles.iconAndBadge}>
-                  <Icon style={_getIconStyle(tab)} name={tab.icon} type={tab.iconType} />
+                  {
+                    tab.viewType === "image" ? (<Thumbnail small source={{ uri: tab.uri }} />) : (<Icon style={_getIconStyle(tab)} name={tab.icon} type={tab.iconType} />)
+                  }
                   {_renderBadge(tab)}
                 </View>
 
